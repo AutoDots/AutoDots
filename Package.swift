@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "AutoDots",
     platforms: [
-       .macOS(.v13)
+       .macOS(.v13) // Platform declaration (can be adjusted if needed for Linux-specific targets)
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
@@ -13,7 +13,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/leaf.git", from: "4.3.0"),
         // 🔵 Non-blocking, event-driven networking for Swift. Used for custom executors
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
-        // 👇 ADDED MathCat-Swift DEPENDENCY HERE 👇
+        // 👇 COMMENTED OUT MathCat-Swift DEPENDENCY - Linking against system libmathcat instead 👇
         .package(url: "https://github.com/AutoDots/MathCat-Swift.git", branch: "main"),
     ],
     targets: [
@@ -24,10 +24,14 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
-                // 👇 ADDED MathCat-Swift PRODUCT DEPENDENCY HERE 👇
-                .product(name: "MathCat", package: "MathCat-Swift"), // ⚠️ Verify product name "MathCat" is correct!
+                // 👇 COMMENTED OUT MathCat-Swift PRODUCT DEPENDENCY 👇
+                 .product(name: "MathCat", package: "MathCat-Swift"),
             ],
-            swiftSettings: swiftSettings
+            swiftSettings: swiftSettings, // Placed BEFORE linkerSettings as required
+            linkerSettings: [
+                .linkedLibrary("libmathcat_c"), // Links against libmathcat.so (or .a) - Linux compatible
+                .unsafeFlags(["-L/usr/local/lib"]) // Adds /usr/local/lib to linker search paths - Linux compatible
+            ]
         ),
         .testTarget(
             name: "AppTests",
@@ -35,7 +39,7 @@ let package = Package(
                 .target(name: "App"),
                 .product(name: "VaporTesting", package: "vapor"),
             ],
-            swiftSettings: swiftSettings
+            swiftSettings: swiftSettings // Placed BEFORE other settings for consistency
         )
     ],
     swiftLanguageModes: [.v5]
