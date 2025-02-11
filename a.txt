@@ -1,0 +1,32 @@
+.
+├── Dockerfile
+├── Package.resolved
+├── Package.swift
+├── Public
+│   └── scripts
+│       └── translate.js
+├── Resources
+│   └── Views
+│       ├── index.leaf
+│       └── translate.leaf
+├── Sources
+│   ├── App
+│   │   ├── Controllers
+│   │   ├── configure.swift
+│   │   ├── entrypoint.swift
+│   │   ├── g1.swift
+│   │   └── routes.swift
+│   ├── CMathCat
+│   │   ├── Include
+│   │   │   └── MathCat.h
+│   │   ├── Lib
+│   │   └── MathCat.c
+│   └── MathCat
+│       └── Main.swift
+├── Tests
+│   └── AppTests
+│       └── AppTests.swift
+├── a.txt
+└── docker-compose.yml
+
+14 directories, 16 files

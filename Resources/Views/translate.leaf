@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AutoDots - Text to Braille Translation</title>
+    <link rel="stylesheet" href="/styles/app.css"> </head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <main id="main">
+        <section class="translate-section" aria-labelledby="translate-title">
+            <div class="container">
+                <h1 id="translate-title">Text to Braille Translation</h1>
+
+                <form id="translation-form">
+                    <div class="form-group">
+                        <label for="brailleGrade">Braille Grade:</label>
+                        <select id="brailleGrade" name="brailleGrade">
+                            <option value="grade1">Grade 1</option>
+                            <option value="grade2">Grade 2</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group text-input">
+                        <label for="inputText">Enter Text Here:</label>
+                        <textarea id="inputText" name="inputText" placeholder="Type or paste text to translate"></textarea>
+                    </div>
+
+                    <div class="form-group braille-output">
+                        <label for="brailleOutput">Braille Output:</label>
+                        <div id="brailleOutput" class="output-box">
+                            <!-- Braille output will be displayed here -->
+                        </div>
+                    </div>
+
+                    <div class="form-group action-buttons"> <!-- Group buttons for styling if needed -->
+                        <button type="button" id="runButton">Run Translation</button>
+                        <button type="button" id="copyButton">Copy Braille to Clipboard</button> <!-- New Copy Button -->
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="/scripts/translate.js"></script>  </body>
+</html>
