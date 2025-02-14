@@ -19,6 +19,7 @@
                         <select id="brailleGrade" name="brailleGrade">
                             <option value="grade1">Grade 1</option>
                             <option value="grade2">Grade 2</option>
+							<option value="maths">Maths (LaTex)</option>
                         </select>
                     </div>
 

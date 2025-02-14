@@ -52,27 +52,33 @@ func routes(_ app: Application) throws {
             let tempFilename = "mathml-output-\(UUID().uuidString).xml" // Changed extension to .xml
             let tempFileURL = tempDirectory.appendingPathComponent(tempFilename)
             let tempFilePath = tempFileURL.path
-
+			print(tempFilePath)
             let process = Process()
-            process.executableURL = URL(fileURLWithPath: "/usr/local/bin/latexmlmath") // Make sure this is the correct path!
+            process.executableURL = URL(fileURLWithPath: "/usr/bin/latexmlmath")
             process.arguments = [
                 "--strict",
-                "presentation-mathml",
-                "--output=\(tempFilePath)",
+				"--verbose",
+				"--verbose",
+                "--pmml=\(tempFilePath)",
                 "-" // Read from stdin
             ]
-            process.standardInput = Pipe()
-            process.standardOutput = Pipe()
-            process.standardError = Pipe()
+
+            let inputPipe = Pipe() // Create a Pipe for input
+            process.standardInput = inputPipe // Set process's standardInput to the Pipe
+            let outputPipe = Pipe() // Create a Pipe for output
+            process.standardOutput = outputPipe // Set process's standardOutput
+            let errorPipe = Pipe() // Create a Pipe for error
+            process.standardError = errorPipe // Set process's standardError
+
 
             do {
-                try process.run()
 
-                process.standardInput.fileHandleForWriting.write(Data(inputText.utf8))
-                process.standardInput.fileHandleForWriting.close()
+
+                try inputPipe.fileHandleForWriting.write(Data(inputText.utf8)) // Use inputPipe to write
+                try inputPipe.fileHandleForWriting.close() // Close the writing end of the input pipe
 
                 process.waitUntilExit()
-
+                try process.run()
                 if process.terminationStatus == 0 {
                     // 2. Read MathML from temporary file
                     let mathMLData = try Data(contentsOf: tempFileURL)
@@ -95,7 +101,7 @@ func routes(_ app: Application) throws {
 
                 } else {
                     // latexmlmath failed - get error message from stderr
-                    let errorData = process.standardError.fileHandleForReading.readDataToEndOfFile()
+                    let errorData = try errorPipe.fileHandleForReading.readDataToEndOfFile() // Use errorPipe to read error
                     let errorMessage = String(data: errorData, encoding: .utf8) ?? "Unknown LaTeX conversion error"
                     try? FileManager.default.removeItem(at: tempFileURL) // Clean up on error
                     throw Abort(.badRequest, reason: "LaTeX conversion failed: \(errorMessage)") // Return 400 error to client
