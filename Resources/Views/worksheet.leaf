@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adjective Worksheet – AutoDots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Adjective Worksheet</h1>
+    <p>Grade 1 Braille sentences with missing adjectives for Year 5 students.</p>
+    <a href="/">← Back to Home</a>
+  </header>
+
+  <main>
+    <section>
+      <pre>
+⠠⠽⠑⠁⠗⠀⠼⠑⠀⠠⠁⠙⠚⠑⠉⠞⠊⠧⠑⠀⠠⠺⠕⠗⠅⠎⠓⠑⠑⠞
+
+⠼⠁⠲⠀⠠⠞⠓⠑⠀⠨⠤⠨⠤⠨⠤⠀⠙⠕⠛⠀⠃⠁⠗⠅⠑⠙⠀⠨⠤⠨⠤⠀⠁⠞⠀⠞⠓⠑⠀⠨⠤⠨⠤⠀⠉⠁⠞⠲  
+⠼⠃⠲⠀⠠⠞⠓⠑⠀⠨⠤⠨⠤⠨⠤⠀⠛⠊⠗⠇⠀⠎⠅⠊⠏⠏⠑⠙⠀⠙⠕⠺⠝⠀⠞⠓⠑⠀⠨⠤⠨⠤⠀⠏⠁⠞⠓⠲  
+⠼⠉⠲⠀⠠⠞⠓⠑⠀⠨⠤⠨⠤⠨⠤⠀⠺⠊⠵⠁⠗⠙⠀⠉⠁⠎⠞⠀⠁⠀⠨⠤⠨⠤⠀⠎⠏⠑⠇⠇⠲  
+⠼⠙⠲⠀⠠⠞⠓⠑⠀⠨⠤⠨⠤⠨⠤⠀⠉⠓⠊⠇⠙⠗⠑⠝⠀⠃⠥⠊⠇⠞⠀⠁⠀⠨⠤⠨⠤⠀⠎⠝⠕⠺⠍⠁⠝⠲  
+⠼⠑⠲⠀⠠⠞⠓⠑⠀⠨⠤⠨⠤⠨⠤⠀⠋⠇⠕⠺⠑⠗⠀⠃⠇⠕⠕⠍⠑⠙⠀⠊⠝⠀⠞⠓⠑⠀⠨⠤⠨⠤⠀⠛⠁⠗⠙⠑⠝⠲  
+      </pre>
+    </section>
+  </main>
+</body>
+</html>

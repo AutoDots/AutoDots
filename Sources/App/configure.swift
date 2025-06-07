@@ -7,7 +7,7 @@ public func configure(_ app: Application) async throws {
      app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
     app.views.use(.leaf)
-
+app.routes.defaultMaxBodySize = "10mb" // or however much you need
 
     // register routes
     try routes(app)

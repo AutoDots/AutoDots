@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3 Times Table – AutoDots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>3 Times Table in UEB Technical Braille</h1>
+    <p>Explore multiplication in accessible Braille format.</p>
+    <a href="/">← Back to Home</a>
+  </header>
+
+  <main role="main">
+    <section>
+      <pre aria-label="3 times table in braille">
+3×1 = 3: ⠼⠉⠐⠦⠼⠁⠀⠐⠶⠀⠼⠉
+3×2 = 6: ⠼⠉⠐⠦⠼⠃⠀⠐⠶⠀⠼⠋
+3×3 = 9: ⠼⠉⠐⠦⠼⠉⠀⠐⠶⠀⠼⠊
+3×4 = 12: ⠼⠉⠐⠦⠼⠙⠀⠐⠶⠀⠼⠁⠃
+3×5 = 15: ⠼⠉⠐⠦⠼⠑⠀⠐⠶⠀⠼⠁⠑
+3×6 = 18: ⠼⠉⠐⠦⠼⠋⠀⠐⠶⠀⠼⠁⠓
+3×7 = 21: ⠼⠉⠐⠦⠼⠛⠀⠐⠶⠀⠼⠃⠁
+3×8 = 24: ⠼⠉⠐⠦⠼⠓⠀⠐⠶⠀⠼⠃⠙
+3×9 = 27: ⠼⠉⠐⠦⠼⠊⠀⠐⠶⠀⠼⠃⠛
+3×10 = 30: ⠼⠉⠐⠦⠼⠁⠚⠀⠐⠶⠀⠼⠉⠚
+3×11 = 33: ⠼⠉⠐⠦⠼⠁⠁⠀⠐⠶⠀⠼⠉⠉
+3×12 = 36: ⠼⠉⠐⠦⠼⠁⠃⠀⠐⠶⠀⠼⠉⠋
+      </pre>
+    </section>
+  </main>
+</body>
+</html>

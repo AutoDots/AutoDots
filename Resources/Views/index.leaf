@@ -1,88 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AutoDots - Braille Translation Made Easy</title>
-    <link rel="stylesheet" href="/styles/app.css">
-</head>
-<body>
-    <a href="#main" class="skip-link">Skip to main content</a>
-    
-    <main id="main">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="container">
-                <h1 id="hero-title">Welcome to AutoDots</h1>
-                <p>
-                    AutoDots uses advanced AI to quickly and accurately translate between text and Braille. 
-                    #if(learnMoreLink != nil):
-                        <a href="#(learnMoreLink)">Learn how AutoDots can make information more accessible for you</a>
-                    #else:
-                        Learn how AutoDots can make information more accessible for you
+// MARK: - index.leaf (Fixed)
+#extend("base"):
+    #export("title", "AutoDots - Accurate Braille Translation including LaTeX")  // Key "title" is now an explicit string literal
+    #export("body"):                                                            // Key "body" is now an explicit string literal
+
+        <section class="text-center py-16 bg-white rounded-lg shadow-xl mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Welcome to AutoDots</h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Unlock accurate Braille translations with AutoDots. We convert standard text and complex **LaTeX** (for mathematical and technical content) into Uncontracted (Grade 1), Contracted (Grade 2), and specialized UEB Technical Braille.
+            </p>
+            // Example of using a variable passed from your Swift route
+            #if(ctaButton):
+            <a href="#(ctaButton.link)" class="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition duration-200 shadow-lg">
+                #(ctaButton.text)
+            </a>
+            #else:
+            <a href="/chat" class="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition duration-200 shadow-lg">
+                Try the Translator
+            </a>
+            #endif
+        </section>
+
+        <section id="features" class="py-12">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Why AutoDots?</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <svg class="w-16 h-16 text-indigo-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-3">Accurate Technical Braille</h3>
+                    <p class="text-gray-600">Specialized support for **LaTeX input** to generate precise UEB Technical Braille for maths and science using our AutoLouis engine with MathCAT integration.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                     <svg class="w-16 h-16 text-indigo-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-3">Comprehensive & Fast</h3>
+                    <p class="text-gray-600">Quickly translate to Uncontracted (Grade 1) and planned Contracted (Grade 2) Braille alongside technical formats.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <svg class="w-16 h-16 text-indigo-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-.027.134-.053.268-.08.403M21.542 12C20.268 16.057 16.477 19 12 19c-4.478 0-8.268-2.943-9.542-7 .027-.134.053-.268.08-.403L2.458 12z"></path></svg>
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-3">User-Focused Accessibility</h3>
+                    <p class="text-gray-600">Designed to be an intuitive and accessible tool for educators, students, and professionals alike.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 bg-gray-50 rounded-lg shadow-md mt-12">
+            <div class="container mx-auto text-left md:text-center px-6">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Translate Complex Math with Ease</h2>
+                <div class="md:flex md:items-center md:justify-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0 md:pr-4">
+                        <p class="text-lg text-gray-700 mb-4">
+                            AutoDots excels at converting mathematical content. Simply provide your equations in **LaTeX format** on our translation page, and our AutoLouis engine will process it into accurate UEB Technical Braille.
+                        </p>
+                        <p class="text-gray-600">For example, input LaTeX like: <code class="text-sm bg-gray-200 p-1 rounded">\frac{\sqrt{x^2+y^2}}{a+b}</code></p>
+                        <p class="text-gray-600 mt-2">...and get precise Braille output ready for use.</p>
+                    </div>
+                    <div class="md:w-1/2 md:pl-4">
+                        <div class="bg-indigo-100 p-6 rounded-lg text-center">
+                             <p class="text-indigo-700 font-semibold text-xl">Ready to see it in action?</p>
+                             <a href="/chat" class="mt-4 inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200 shadow-md">Translate Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 bg-white rounded-lg shadow-xl mt-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Discover More</h2>
+                <div class="space-x-0 md:space-x-4 space-y-4 md:space-y-0">
+                    #if(learnMoreLink):
+                    <a href="#(learnMoreLink)" class="inline-block bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-200 shadow-md">About AutoDots</a>
                     #endif
-                </p>
-            </div>
-        </section>
-
-        <section class="features" aria-labelledby="features-title">
-            <div class="container">
-                <h2 id="features-title">Making Information Accessible</h2>
-                <p>We understand the challenges faced by vision impaired individuals and educators in accessing information and resources. That's why we've created a tool that is:</p>
-                <ul role="list">
-                    <li>
-                        <h3>Accurate</h3>
-                        <p>Our AI technology, trained on a massive dataset of text and Braille, ensures high-quality translations, understanding context and nuances to reduce the risk of errors and misunderstandings often associated with manual transcription or outdated software.</p>
-                    </li>
-                    <li>
-                        <h3>Fast</h3>
-                        <p>Get your documents translated in seconds, no matter the length. No more waiting for days or weeks for manual transcriptions.</p>
-                        <ul>
-                            <li>Students can quickly convert textbooks and study materials into Braille.</li>
-                            <li>Teachers can easily create accessible classroom handouts and exams.</li>
-                            <li>Individuals can translate personal documents or their favorite books.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>Affordable</h3>
-                        <p>Being free, AutoDots offers a cost-effective alternative to expensive Braille translation software or transcription services.</p>
-                    </li>
-                    <li>
-                        <h3>Private</h3>
-                        <p>Translate your documents with confidence, knowing that your information remains secure. No need to share sensitive content with third-party transcribers.</p>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="accessibility" aria-labelledby="accessibility-title">
-            <div class="container">
-                <h2 id="accessibility-title">Designed with Accessibility in Mind</h2>
-                <p>AutoDots features a simple, intuitive interface designed with accessibility in mind. It's fully compatible with screen readers and offers keyboard navigation for a seamless experience.</p>
-                <p>
-                    AutoDots supports #(supportedCodes)
-                    #if(specificCodesLink != nil):
-                        . <a href="#(specificCodesLink)">Click here to see a full list</a>
+                    #if(supportedCodesLink):
+                    <a href="#(supportedCodesLink)" class="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200 shadow-md">Supported Braille Codes</a>
                     #endif
-                </p>
+                </div>
             </div>
         </section>
-
-        <section class="call-to-action" aria-labelledby="cta-title">
-            <div class="container">
-                <h2 id="cta-title">Try AutoDots Today!</h2>
-                <p>Experience the difference AutoDots can make in accessing information.</p>
-                #if(ctaButton != nil):
-                    <a href="#(ctaButton.link)" class="button">#(ctaButton.text)</a>
-                #endif
-            </div>
-        </section>
-
-        <section class="commitment" aria-labelledby="commitment-title">
-            <div class="container">
-                <h2 id="commitment-title" class="visually-hidden">Our Commitment</h2>
-                <p>We are committed to continuous improvement and welcome user feedback to ensure the highest level of accuracy.</p>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
+    #endexport
+#endextend

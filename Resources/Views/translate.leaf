@@ -1,48 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AutoDots - Text to Braille Translation</title>
-    <link rel="stylesheet" href="/styles/app.css"> </head>
+    <title>Braille Chat</title>
+    <link rel="stylesheet" href="/styles/app.css">
+    <!--  Add some basic styling (optional) -->
+    <style>
+        body { font-family: sans-serif; }
+        textarea { width: 80%; height: 150px; margin-bottom: 10px; }
+        pre { border: 1px solid #ccc; padding: 10px; background-color: #f0f0f0; }
+        .error { color: red; }
+    </style>
+</head>
 <body>
-    <a href="#main" class="skip-link">Skip to main content</a>
+    <h1>Braille Translator</h1>
 
-    <main id="main">
-        <section class="translate-section" aria-labelledby="translate-title">
-            <div class="container">
-                <h1 id="translate-title">Text to Braille Translation</h1>
+    <form method="post" action="/chat/post"> <!-- Corrected action URL -->
+        <label for="text">Enter text or LaTeX:</label><br>
+        <textarea id="text" name="text" rows="4" cols="50">#if(inputText){#(inputText)}</textarea><br><br>
+        <button type="submit">Translate</button>
+    </form>
 
-                <form id="translation-form">
-                    <div class="form-group">
-                        <label for="brailleGrade">Braille Grade:</label>
-                        <select id="brailleGrade" name="brailleGrade">
-                            <option value="grade1">Grade 1</option>
-                            <option value="grade2">Grade 2</option>
-							<option value="maths">Maths (LaTex)</option>
-                        </select>
-                    </div>
+    #if(output):
+        <h2>Braille Output:</h2>
+        <pre>#(output)</pre>
+    #endif
 
-                    <div class="form-group text-input">
-                        <label for="inputText">Enter Text Here:</label>
-                        <textarea id="inputText" name="inputText" placeholder="Type or paste text to translate"></textarea>
-                    </div>
-
-                    <div class="form-group braille-output">
-                        <label for="brailleOutput">Braille Output:</label>
-                        <div id="brailleOutput" class="output-box">
-                            <!-- Braille output will be displayed here -->
-                        </div>
-                    </div>
-
-                    <div class="form-group action-buttons"> <!-- Group buttons for styling if needed -->
-                        <button type="button" id="runButton">Run Translation</button>
-                        <button type="button" id="copyButton">Copy Braille to Clipboard</button> <!-- New Copy Button -->
-                    </div>
-
-                </form>
-            </div>
-        </section>
-    </main>
-    <script src="/scripts/translate.js"></script>  </body>
+    #if(errorMessage):
+        <p class="error">Error: #(errorMessage)</p>
+    #endif
+</body>
 </html>
